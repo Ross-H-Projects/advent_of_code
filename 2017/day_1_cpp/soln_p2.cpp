@@ -32,16 +32,13 @@ int main () {
 }
 
 int parse_file (int *nums, int length) {
-    int before = 0; // can be set to 0 as place holder
+    int half_way_index;
     int sum = 0;
     for (int i = 0; i < length; i++) {
-        if (nums[i] == before) {
+        half_way_index = (i + (length / 2)) % length;
+        if (nums[i] == nums[half_way_index]) {
             sum += nums[i];
         }
-        if (i == length - 1 && nums[i] == nums[0]) {
-            sum += nums[i];
-        }
-        before = nums[i];
     }
     return sum;
 }
